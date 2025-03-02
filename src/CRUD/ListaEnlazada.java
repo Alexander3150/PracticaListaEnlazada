@@ -35,6 +35,7 @@ public class ListaEnlazada {
         }
         StringBuilder listaEstudiantes = new StringBuilder();
         NodoSimple mensajer = cabeza;
+        ordenar();
         while (mensajer != null) 
         {
             listaEstudiantes.append("Estudiante:  ").append(mensajer.estudiante.nombre)
@@ -89,5 +90,35 @@ public class ListaEnlazada {
         }
     
         JOptionPane.showMessageDialog(null, "El estudiante " + nombre + " no existe.");
+    }
+
+    // Metodo para ordenar de forma Alfabetica la lista por metodo burbuja 
+    public void ordenar()
+    {
+        if(cabeza == null || cabeza.siguiente == null)
+        {
+            return;
+        }
+        boolean cambio;
+        do {
+            cambio = false;
+            NodoSimple actual = cabeza;
+            NodoSimple anterior = null;
+            while (actual != null && actual.siguiente != null) 
+            {
+                NodoSimple siguiente = actual.siguiente;
+
+                if (actual.estudiante.nombre.compareToIgnoreCase(siguiente.estudiante.nombre)>0) 
+                {
+                    Estudiante temporal= actual.estudiante;
+                    actual.estudiante = siguiente.estudiante;
+                    siguiente.estudiante =temporal;
+                    cambio = true;
+                }
+                anterior = actual;
+                actual = actual.siguiente;
+            }
+
+        } while (cambio);
     }
 }
