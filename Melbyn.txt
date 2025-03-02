@@ -1,1 +1,4 @@
 Esta es una practica para poder realizar clonaciones en GitHub.
+
+Cambio:
+Ya pude hacer dos ramas, aunque una no se por que se duplico, pero sirve como guia de que no hacer. 
