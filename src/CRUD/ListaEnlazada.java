@@ -121,4 +121,31 @@ public class ListaEnlazada {
 
         } while (cambio);
     }
+    // Ordenar las edades de mayor a menor por el metodo burbuja 
+    public void ordenarEdades()
+    {
+        if (cabeza == null || cabeza.siguiente == null) 
+        {
+            return;   
+        }
+        boolean cambio;
+        do {
+            cambio = false;
+            NodoSimple actual = cabeza;
+                while (actual != null && actual.siguiente == null) 
+                {
+                    NodoSimple siguiente = actual.siguiente;
+                        if(actual.estudiante.edad < siguiente.estudiante.edad)
+                        {
+                            Estudiante temporal = actual.estudiante;
+                            actual.estudiante = siguiente.estudiante;
+                            siguiente.estudiante = temporal;
+                            cambio = true;
+                        }
+                        actual = actual.siguiente;
+                }
+        } while (cambio);
+        mostrarListaEstudiantes();
+    }
+
 }
