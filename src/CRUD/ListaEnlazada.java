@@ -122,30 +122,52 @@ public class ListaEnlazada {
         } while (cambio);
     }
     // Ordenar las edades de mayor a menor por el metodo burbuja 
-    public void ordenarEdades()
-    {
-        if (cabeza == null || cabeza.siguiente == null) 
-        {
-            return;   
+    public void ordenarEdades() {
+        if (cabeza == null || cabeza.siguiente == null) {
+            return;  // Si la lista está vacía o tiene solo un elemento, no hay necesidad de ordenar.
         }
+    
         boolean cambio;
         do {
             cambio = false;
             NodoSimple actual = cabeza;
-                while (actual != null && actual.siguiente == null) 
-                {
-                    NodoSimple siguiente = actual.siguiente;
-                        if(actual.estudiante.edad < siguiente.estudiante.edad)
-                        {
-                            Estudiante temporal = actual.estudiante;
-                            actual.estudiante = siguiente.estudiante;
-                            siguiente.estudiante = temporal;
-                            cambio = true;
-                        }
-                        actual = actual.siguiente;
+    
+            while (actual != null && actual.siguiente != null) { // Recorrer la lista mientras haya un siguiente nodo
+                NodoSimple siguiente = actual.siguiente;
+    
+                // Compara las edades de los estudiantes y realiza un intercambio si están en el orden incorrecto.
+                if (actual.estudiante.edad < siguiente.estudiante.edad) {  // De mayor a menor
+                    // Intercambia los estudiantes entre los nodos sin mover los nodos en sí
+                    Estudiante temporal = actual.estudiante;
+                    actual.estudiante = siguiente.estudiante;
+                    siguiente.estudiante = temporal;
+                    cambio = true;  // Marca que hubo un cambio, para repetir la comparación.
                 }
-        } while (cambio);
-        mostrarListaEstudiantes();
+    
+                actual = actual.siguiente;  // Avanza al siguiente nodo.
+            }
+        } while (cambio);  // Si hubo un cambio, repite el proceso de ordenar.
+    
+        mostrarListaEstudiantesEdades();  // Muestra la lista ya ordenada.
     }
+    public void mostrarListaEstudiantesEdades()
+    {
+        if (vacia())
+        {
+            JOptionPane.showMessageDialog(null, "La lista esta vacia.");
+            return;
+        }
+        StringBuilder listaEstudiantes = new StringBuilder();
+        NodoSimple mensajer = cabeza;
+        while (mensajer != null) 
+        {
+            listaEstudiantes.append("Estudiante:  ").append(mensajer.estudiante.nombre)
+            .append(" Edad: ").append(mensajer.estudiante.edad).append("\n");
+            mensajer = mensajer.siguiente;
+        }
+        JOptionPane.showConfirmDialog(null,listaEstudiantes.toString());
+    }
+
+    
 
 }

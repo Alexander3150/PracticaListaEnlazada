@@ -7,13 +7,14 @@ public class App {
         ListaEnlazada lista = new ListaEnlazada();
         int opcion = 0;
 
-        while (opcion != 5) {
+        while (opcion != 6) {
             String menu = "Menú de Opciones:\n"
                     + "1. Agregar estudiante\n"
                     + "2. Mostrar estudiantes\n"
                     + "3. Buscar estudiante\n"
                     + "4. Eliminar estudiante\n"
-                    + "5. Salir\n"
+                    + "5. Ordenar de la edad más grande\n"
+                    + "6. Salir\n"
                     + "Elige una opción:";
 
             String input = JOptionPane.showInputDialog(menu);
@@ -47,7 +48,8 @@ public class App {
                         break;
 
                     case 3:
-                        String nombreBuscar = JOptionPane.showInputDialog("Ingrese el nombre del estudiante a buscar:");
+                        String nombreBuscar =
+                        JOptionPane.showInputDialog("Ingrese el nombre del estudiante a buscar:");
                         if (nombreBuscar != null && !nombreBuscar.trim().isEmpty()) {
                             lista.buscarEstudiante(nombreBuscar);
                         } else {
@@ -65,8 +67,12 @@ public class App {
                         break;
 
                     case 5:
+                        lista.ordenarEdades();
+                        break;
+                    case 6:
                         JOptionPane.showMessageDialog(null, "Saliendo del programa...");
                         break;
+
 
                     default:
                         JOptionPane.showMessageDialog(null, "Opción no válida, intenta de nuevo.");
