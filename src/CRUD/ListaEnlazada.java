@@ -7,6 +7,7 @@ public class ListaEnlazada {
         
     public boolean vacia ()
     {
+        // Es una forma de ahorrar tiempo, es lo mismo que utilizar if( cabeza == null) { return; }
     return cabeza == null;    
     }
 
